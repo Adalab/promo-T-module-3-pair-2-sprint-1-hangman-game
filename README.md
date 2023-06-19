@@ -1,1 +1,1 @@
-# promo-T-module-3-pair-2-sprint-1-hangman-game
+# React Starter Kit
