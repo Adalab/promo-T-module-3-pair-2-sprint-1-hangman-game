@@ -6,7 +6,7 @@ function App() {
   const handleClick = (event) => {
     console.log('holi');
     const result = numberOfErrors + 1;
-    setNumberOfErrors(result);
+    setNumberOfErrors('dummy error-'+ result);
   };
 
   return (
@@ -55,7 +55,7 @@ function App() {
             />
           </form>
         </section>
-        <section className='numberOfErrors'>
+        <section className={numberOfErrors}>
           <span className='error-13 eye'></span>
           <span className='error-12 eye'></span>
           <span className='error-11 line'></span>
