@@ -1,12 +1,17 @@
 import { useState } from 'react';
 import '../styles/App.scss';
 
-function App() {
+function App() 
   const [numberOfErrors, setNumberOfErrors] = useState(0);
+  const [lastLetter, setLastLetter] = useState('');
+
   const handleClick = (event) => {
-    console.log('holi');
-    const result = numberOfErrors + 1;
-    setNumberOfErrors('dummy error-'+ result);
+    setNumberOfErrors(numberOfErrors + 1);
+  };
+
+  const handleLetter = (event) => {
+      console.log ('holi');
+      
   };
 
   return (
@@ -52,10 +57,11 @@ function App() {
               type='text'
               name='last-letter'
               id='last-letter'
+              onChange= {handleLetter}
             />
           </form>
         </section>
-        <section className={numberOfErrors}>
+        <section className={'dummy error-' + numberOfErrors}>
           <span className='error-13 eye'></span>
           <span className='error-12 eye'></span>
           <span className='error-11 line'></span>
@@ -76,6 +82,6 @@ function App() {
       </main>
     </div>
   );
-}
+
 
 export default App;
