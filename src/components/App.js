@@ -1,17 +1,29 @@
 import { useState } from 'react';
 import '../styles/App.scss';
 
-function App() 
+function App() {
   const [numberOfErrors, setNumberOfErrors] = useState(0);
   const [lastLetter, setLastLetter] = useState('');
+  const [word, setWrod] = useState = useState('katakroker');
+  const [userLetters, setUserLetters] = useState ([]);
+
+  const renderSolutionLetters = () => {
+    const wordLetters = word.split('');
+    return wordLetters.map((letter, i)=> 
+      <li className="letter" key={i}></li>
+    )
+  };
 
   const handleClick = (event) => {
     setNumberOfErrors(numberOfErrors + 1);
   };
 
   const handleLetter = (event) => {
-      console.log ('holi');
-      
+    const pattern = new RegExp('^[a-zA-Z]+$');
+    if (pattern.test(event.target.value)) {
+      setLastLetter(event.target.value);
+      setUserLetters([...userLetters, lastLetter]);
+    };    
   };
 
   return (
@@ -24,16 +36,8 @@ function App()
           <div className='solution'>
             <h2 className='title'>Solución:</h2>
             <ul className='letters'>
-              <li className='letter'>k</li>
-              <li className='letter'>a</li>
-              <li className='letter'></li>
-              <li className='letter'>a</li>
-              <li className='letter'>k</li>
-              <li className='letter'>r</li>
-              <li className='letter'></li>
-              <li className='letter'>k</li>
-              <li className='letter'>e</li>
-              <li className='letter'>r</li>
+            {renderSolutionLetters()}
+              
             </ul>
           </div>
           <div className='error'>
@@ -58,6 +62,7 @@ function App()
               name='last-letter'
               id='last-letter'
               onChange= {handleLetter}
+              value={lastLetter}
             />
           </form>
         </section>
@@ -83,5 +88,5 @@ function App()
     </div>
   );
 
-
+}
 export default App;
